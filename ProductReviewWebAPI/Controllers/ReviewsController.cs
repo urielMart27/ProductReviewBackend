@@ -30,7 +30,7 @@ namespace ProductReviewWebAPI.Controllers
         public IActionResult Get(int id)
         {
             var review = _context.Reviews.Find(id);
-            if (re == null)
+            if (review == null)
             {
                 return NotFound();
             }
@@ -74,6 +74,16 @@ namespace ProductReviewWebAPI.Controllers
             _context.Reviews.Remove(review);
             _context.SaveChanges();
             return NoContent();
+        }
+
+        [HttpGet("ByProductId/{productId}")]
+        public IActionResult GetbyProductId(int productId)
+        {
+            var reviews = _context.Reviews
+                .Where(r => r.ProductId == productId)
+                .ToList();
+
+            return StatusCode(200, reviews);
         }
     }
 }
