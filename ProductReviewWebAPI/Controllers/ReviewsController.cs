@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductReviewWebAPI.Data;
+using ProductReviewWebAPI.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,7 +30,7 @@ namespace ProductReviewWebAPI.Controllers
         public IActionResult Get(int id)
         {
             var review = _context.Reviews.Find(id);
-            if (review == null)
+            if (re == null)
             {
                 return NotFound();
             }
@@ -38,20 +39,41 @@ namespace ProductReviewWebAPI.Controllers
 
         // POST api/<ReviewsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Review review)
         {
+            _context.Reviews.Add(review);
+            _context.SaveChanges();
+            return StatusCode(201, review);
         }
 
         // PUT api/<ReviewsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Review updateReview)
         {
+            var currentReview = _context.Reviews.Find(id);
+
+            if (currentReview == null)
+            {
+                return NotFound();
+            }
+            currentReview.Text = updateReview.Text;
+            currentReview.Rating = updateReview.Rating;
+            currentReview.ProductId = updateReview.ProductId;
+            currentReview.Product = updateReview.Product;
+
+            _context.Reviews.Update(currentReview);
+            _context.SaveChanges();
+            return StatusCode(200, currentReview);
         }
 
         // DELETE api/<ReviewsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var review = _context.Reviews.Find(id);
+            _context.Reviews.Remove(review);
+            _context.SaveChanges();
+            return NoContent();
         }
     }
 }
