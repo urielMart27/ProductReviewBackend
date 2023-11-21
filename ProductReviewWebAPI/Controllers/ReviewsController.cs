@@ -18,16 +18,22 @@ namespace ProductReviewWebAPI.Controllers
 
         // GET: api/<ReviewsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var reviews = _context.Reviews.ToList();
+            return StatusCode(200, reviews);
         }
 
         // GET api/<ReviewsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var review = _context.Reviews.Find(id);
+            if (review == null)
+            {
+                return NotFound();
+            }
+            return StatusCode(200, review);
         }
 
         // POST api/<ReviewsController>
