@@ -16,19 +16,6 @@ namespace ProductReviewWebAPI.Controllers
         {
             _context = context;
         }
-        // GET: api/<ProductsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<ProductsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST api/<ProductsController>
         [HttpPost]
@@ -41,14 +28,31 @@ namespace ProductReviewWebAPI.Controllers
 
         // PUT api/<ProductsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Product updateProduct)
         {
+            var currentProduct = _context.Products.Find(id);
+
+            if (currentProduct == null)
+            {
+                return NotFound();
+            }
+            currentProduct.Name = updateProduct.Name;
+            currentProduct.Price = updateProduct.Price;
+            currentProduct.Reviews = updateProduct.Reviews;
+
+            _context.Products.Update(currentProduct);
+            _context.SaveChanges();
+            return StatusCode(200, currentProduct);
         }
 
         // DELETE api/<ProductsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var product = _context.Products.Find(id);
+            _context.Products.Remove(product);
+            _context.SaveChanges();
+            return NoContent();
         }
     }
 }
