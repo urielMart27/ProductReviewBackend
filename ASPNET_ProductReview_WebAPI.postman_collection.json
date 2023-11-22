@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "1f57c45b-982c-4a97-963a-9c9aa2b7dd29",
+		"name": "ASPNET_ProductReview_WebAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31187941"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Under $20",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7213/api/Products?maxprice=20",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Products"
+							],
+							"query": [
+								{
+									"key": "maxprice",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7213/api/Products",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7213/api/Products/4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Products",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"Name\": \"Toaster\",\r\n\"Price\": 34.99,\r\n\"Reviews\": []\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7213/api/Products",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Silverware\",\r\n    \"Price\": 7.99,\r\n    \"Reviews\": []\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7213/api/Products/7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Products",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Coffee Maker\",\r\n    \"Price\": 39.99,\r\n    \"Reviews\": []\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7213/api/Products/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Products",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7213/api/Reviews",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7213/api/Reviews/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Reviews",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Product Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7213/api/Reviews/ByProductId/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Reviews",
+								"ByProductId",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Text\": \"Not bad, but wouldn't recommend\",\r\n    \"Rating\": 3,\r\n    \"ProductId\": 8 \r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7213/api/Reviews",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Text\": \"Great value for the price\",\r\n    \"Rating\": 5,\r\n    \"ProductId\": 3 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7213/api/Reviews/13",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Reviews",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7213/api/Reviews/18",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7213",
+							"path": [
+								"api",
+								"Reviews",
+								"18"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
