@@ -76,6 +76,7 @@ namespace ProductReviewWebAPI.Controllers
             return NoContent();
         }
 
+        // GET/ api/ByProductId/5
         [HttpGet("ByProductId/{productId}")]
         public IActionResult GetbyProductId(int productId)
         {
